@@ -126,10 +126,6 @@ function isChatDataEmpty(target)
     if (!target || target.length == 0) {
         return true;
     }
-    // checks for a non-white space character
-    // which I think [citation needed] is faster
-    // than removing all the whitespace and checking
-    // against an empty string
     return !/[^\s]+/.test(target);
 }
 
