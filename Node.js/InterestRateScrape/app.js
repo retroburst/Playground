@@ -1,6 +1,5 @@
 // requires
 var request = require('request');
-var fs = require('fs');
 
 // vars
 var uri = 'http://www.anz.com/productdata/productdata.asp?output=json&callback=callbackFunction';
