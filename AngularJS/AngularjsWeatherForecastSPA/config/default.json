@@ -1,0 +1,10 @@
+{
+    "appConfig" :
+    {
+        "appName" : "AngularjsWeatherForecastSPA",
+        "version" : "1.0.0",
+        "environment" : "local",
+        "bindIPAddress" : "127.0.0.1",
+        "bindPort" : "3080"
+    }
+}

@@ -1,0 +1,28 @@
+<h1>Home</h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="form-group">
+            <input type="text" class="form-control input-lg" data-ng-model="city" placeholder="City e.g. Belfast" data-ng-enter="submit()" />
+            <input type="text" class="form-control input-lg" data-ng-model="country" placeholder="Country e.g. UK"  data-ng-enter="submit()" />
+            <select class="form-control input-lg" data-ng-model="days" data-ng-enter="submit()">
+                <option value="2">2 Days</option>
+                <option value="5">5 Days</option>
+                <option value="7">7 Days</option>
+            </select>
+        </div>
+        <button class="btn btn-primary btn-lg" data-ng-enter="submit()" data-ng-click="submit()">Forecast {{city}}, {{country}}!</button>
+        <br/><br/>
+        <div class="jumbotron">
+            <div class="text-muted">Shortcuts...</div>
+            <a class="label label-success" href="#/forecast/Dingle/IE/7">Dingle, IE</a>
+            <a class="label label-success" href="#/forecast/Dublin/IE/7">Dublin, IE</a>
+            <a class="label label-success" href="#/forecast/Belfast/GB/7">Belfast, GB</a>
+            <a class="label label-success" href="#/forecast/Kakamigahara/JP/7">Kakamigahara, JP</a>
+            <a class="label label-success" href="#/forecast/Nagoya/JP/7">Nagoya, JP</a>
+            <a class="label label-success" href="#/forecast/Takayama/JP/7">Takayama, JP</a>
+            <a class="label label-success" href="#/forecast/Brisbane/AU/7">Brisbane, AU</a>
+            <a class="label label-success" href="#/forecast/Mount%20Cotton/AU/7">Mount Cotton, AU</a>
+            <a class="label label-success" href="#/forecast/Melbourne/AU/7">Melbourne, AU</a>
+        </div>
+    </div>
+</div>

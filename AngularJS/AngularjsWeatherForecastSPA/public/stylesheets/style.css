@@ -1,0 +1,8 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+html, body, input, select, textarea
+{
+    font-size: 1.05em !important;
+}

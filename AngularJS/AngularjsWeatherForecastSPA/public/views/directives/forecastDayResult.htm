@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ convertDateFn({ date : result.dt }) | date : 'fullDate' }}</h3>
+            </div>
+            <div class="panel-body">
+               <span class="label label-success">Min {{ result.temp.min }} &#8451;</span>
+               <span class="label label-danger">Max {{ result.temp.max }} &#8451;</span>
+               <br/>
+               <span class="label label-info">Humidity {{result.humidity}}%</span>
+               <span data-ng-repeat="detail in result.weather" class="label label-info">{{detail.main}} ({{detail.description}})</span>
+            </div>
+        </div>
+    </div>
+</div>

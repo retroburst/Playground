@@ -1,0 +1,13 @@
+<h1>Forecast - {{ results.city.name }}, {{ results.city.country }} for {{ results.list.length }} day(s)</h1>
+<h3>Latitude {{results.city.coord.lat}}, Longitude {{results.city.coord.lon}} - <a target="_blank" href="http://www.google.com/maps/place/{{results.city.coord.lat}},{{results.city.coord.lon}}">Map</a></h3>
+<hr/>
+Days:
+<div class="btn-group">
+    <a class="btn btn-default" href="#/forecast/{{city}}/{{country}}/2" data-ng-class="{'btn-primary' : {{days}} === 2}">2</a><a class="btn btn-default" href="#/forecast/{{city}}/{{country}}/5" data-ng-class="{'btn-primary' : {{days}} === 5}">5</a><a class="btn btn-default" href="#/forecast/{{city}}/{{country}}/7" data-ng-class="{'btn-primary' : {{days}} === 7}">7</a></span>
+</div>
+<br/><br/>
+<div class="jumbotron">
+    <div data-ng-repeat="result in results.list">
+        <span data-forecast-day-result result="result" convert-date-fn="convertDate(date)"></span> 
+    </div>
+</div>
