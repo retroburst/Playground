@@ -1,5 +1,3 @@
-const API_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=:city,:country&cnt=:days&units=metric&appid=d56d466a5cac3ea549f78896f7c44803";
-
 app.controller('homeController', ['$scope', '$location', '$interpolate', '$routeParams', 'sessionService', function ($scope, $location, $interpolate, $routeParams, sessionService) {
     $scope.city = sessionService.city;
     $scope.country = sessionService.country;
@@ -15,23 +13,21 @@ app.controller('homeController', ['$scope', '$location', '$interpolate', '$route
     $scope.$watch('days', function() { sessionService.days = $scope.days; });
 }]);
 
-app.controller('forecastController', ['$scope', '$resource', '$routeParams', 'sessionService', function ($scope, $resource, $routeParams, sessionService) {
-    $scope.city = $routeParams.city || sessionService.city;
-    $scope.country = $routeParams.country || sessionService.country;
-    $scope.days = $routeParams.days || sessionService.days;
-    $scope.results = null;
-    $scope.API = $resource(API_URL);
-    $scope.API.get({ city: $scope.city, country: $scope.country, days: $scope.days }, function (results, getResponseHeaders) {
-        $scope.results = results;
-        console.log(results);
-    });
+app.controller('forecastController', ['$scope', '$routeParams', 'sessionService', 'weatherService', 
+    function ($scope, $routeParams, sessionService, weatherService) {
+        $scope.city = $routeParams.city || sessionService.city;
+        $scope.country = $routeParams.country || sessionService.country;
+        $scope.days = $routeParams.days || sessionService.days;
+        $scope.results = null;
+        weatherService.getForecast($scope.city, $scope.country, $scope.days).then(
+            (results) => { $scope.results = results; $scope.$apply(); });
+        
+        $scope.convertDate = function convertDate(target) {
+            let date = new Date(target * 1000);
+            return (date);
+        };
 
-    $scope.convertDate = function convertDate(target) {
-        let date = new Date(target * 1000);
-        return (date);
-    };
-
-    $scope.$watch('city', function() { sessionService.city = $scope.city; });
-    $scope.$watch('country', function() { sessionService.country = $scope.country; });
-    $scope.$watch('days', function() { sessionService.days = $scope.days; });
-}]);
+        $scope.$watch('city', function() { sessionService.city = $scope.city; });
+        $scope.$watch('country', function() { sessionService.country = $scope.country; });
+        $scope.$watch('days', function() { sessionService.days = $scope.days; });
+    }]);
